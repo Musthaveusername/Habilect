@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Habilect", "Habilect\Habilect.csproj", "{75B6E98F-7842-428A-B6D2-28F8A8A0628A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PublishScripts", "PublishScripts", "{8D7234F2-9497-4C64-82E0-4C763647F462}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\AzureWebsitePublishModule.psm1 = PublishScripts\AzureWebsitePublishModule.psm1
+		PublishScripts\Publish-WebApplicationWebsite.ps1 = PublishScripts\Publish-WebApplicationWebsite.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configurations", "Configurations", "{1520621D-03C8-4FAC-8A77-EACEC684C651}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\Configurations\Habilect-WAWS-dev.json = PublishScripts\Configurations\Habilect-WAWS-dev.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{612120F0-5514-4E7F-8CC1-656E656E6CA2}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{75B6E98F-7842-428A-B6D2-28F8A8A0628A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75B6E98F-7842-428A-B6D2-28F8A8A0628A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75B6E98F-7842-428A-B6D2-28F8A8A0628A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75B6E98F-7842-428A-B6D2-28F8A8A0628A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1520621D-03C8-4FAC-8A77-EACEC684C651} = {8D7234F2-9497-4C64-82E0-4C763647F462}
+	EndGlobalSection
+EndGlobal
