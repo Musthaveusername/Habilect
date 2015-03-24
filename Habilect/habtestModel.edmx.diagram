@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0aa4e5374d3245d2a4cc06aa6ee1d07d" Name="Diagram1">
+        <EntityTypeShape EntityType="habtestModel.Attempts" Width="1.5" PointX="10.5" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="habtestModel.CourseMotions" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="habtestModel.Courses" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="habtestModel.Motions" Width="1.5" PointX="0.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="habtestModel.MotionTemplates" Width="1.5" PointX="1.5" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="habtestModel.PatientCourses" Width="1.5" PointX="3" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="habtestModel.PatientDiagnostics" Width="1.5" PointX="3.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="habtestModel.Patients" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="habtestModel.PatientSchedule" Width="1.5" PointX="6" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="habtestModel.Sessions" Width="1.5" PointX="8.25" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="habtestModel.FK_Attempts_Motions" ManuallyRouted="false" />
+        <AssociationConnector Association="habtestModel.FK_Attempts_Sessions" ManuallyRouted="false" />
+        <AssociationConnector Association="habtestModel.FK_CourseMotions_Courses" ManuallyRouted="false" />
+        <AssociationConnector Association="habtestModel.FK_CourseMotions_Motions" ManuallyRouted="false" />
+        <AssociationConnector Association="habtestModel.FK_PatientCourses_Courses" ManuallyRouted="false" />
+        <AssociationConnector Association="habtestModel.FK_PatientSchedule_Courses" ManuallyRouted="false" />
+        <AssociationConnector Association="habtestModel.FK_Motions_MotionTemplates" ManuallyRouted="false" />
+        <AssociationConnector Association="habtestModel.FK_PatientDiagnostics_MotionTemplates" ManuallyRouted="false" />
+        <AssociationConnector Association="habtestModel.FK_PatientCourses_Patients" ManuallyRouted="false" />
+        <AssociationConnector Association="habtestModel.FK_PatientDiagnostics_Patients" ManuallyRouted="false" />
+        <AssociationConnector Association="habtestModel.FK_PatientSchedule_Patients" ManuallyRouted="false" />
+        <AssociationConnector Association="habtestModel.FK_Sessions_PatientSchedule" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

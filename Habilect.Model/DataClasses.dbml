@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="habtest" Class="DataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=k4wg0fsc8y.database.windows.net;Initial Catalog=habtest;User ID=habtest;Connect Timeout=60" SettingsObjectName="Habilect.Model.Properties.Settings" SettingsPropertyName="habtestConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Attempts" Member="Attempts">
+    <Type Name="Attempt">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MotionId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SessionId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MaxAngle" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="MaxProgress" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="CompletedTime" Type="System.TimeSpan" DbType="Time NOT NULL" CanBeNull="false" />
+      <Column Name="Velocity" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="FinishedBy" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PlaneAngle" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="SpinalAngle" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="ShoulderAngle" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Association Name="Motion_Attempt" Member="Motion" ThisKey="MotionId" OtherKey="Id" Type="Motion" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Session_Attempt" Member="Session" ThisKey="SessionId" OtherKey="Id" Type="Session" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CourseMotions" Member="CourseMotions">
+    <Type Name="CourseMotion">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CourseId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MotionId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RequiredCount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MotionOrder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Course_CourseMotion" Member="Course" ThisKey="CourseId" OtherKey="Id" Type="Course" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Motion_CourseMotion" Member="Motion" ThisKey="MotionId" OtherKey="Id" Type="Motion" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Courses" Member="Courses">
+    <Type Name="Course">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Association Name="Course_CourseMotion" Member="CourseMotions" ThisKey="Id" OtherKey="CourseId" Type="CourseMotion" />
+      <Association Name="Course_PatientCourse" Member="PatientCourses" ThisKey="Id" OtherKey="CourceId" Type="PatientCourse" />
+      <Association Name="Course_PatientSchedule" Member="PatientSchedules" ThisKey="Id" OtherKey="CourseId" Type="PatientSchedule" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Motions" Member="Motions">
+    <Type Name="Motion">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="StartAngle" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EndAngle" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CheckSpinalBalance" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CheckShoulderBalance" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ShoulderDeviation" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PlaneDeviation" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SpinalDeviation" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MotionTemplateId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Motion_Attempt" Member="Attempts" ThisKey="Id" OtherKey="MotionId" Type="Attempt" />
+      <Association Name="Motion_CourseMotion" Member="CourseMotions" ThisKey="Id" OtherKey="MotionId" Type="CourseMotion" />
+      <Association Name="MotionTemplate_Motion" Member="MotionTemplate" ThisKey="MotionTemplateId" OtherKey="Id" Type="MotionTemplate" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MotionTemplates" Member="MotionTemplates">
+    <Type Name="MotionTemplate">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Icon" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="RotationPlane" Type="System.String" DbType="NVarChar(3) NOT NULL" CanBeNull="false" />
+      <Column Name="AxisJoint" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="RimJoint" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="RimJoint2" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="DefaultStartAngle" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MinStartAngle" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DefaultEndAngle" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MaxEndAngle" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StartDeviation" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EndDeviation" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DefaultPlaneDeviation" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DefaultSpinalDeviation" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DefaultShoulderDeviation" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DefaultCheckSpinalBalance" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="DefaultCheckShoulderBalance" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ViewStartAngle" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DefaultRequiredCount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Direction" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="InstructionIcon" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Association Name="MotionTemplate_Motion" Member="Motions" ThisKey="Id" OtherKey="MotionTemplateId" Type="Motion" />
+      <Association Name="MotionTemplate_PatientDiagnostic" Member="PatientDiagnostics" ThisKey="Id" OtherKey="MotionTemplateId" Type="PatientDiagnostic" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PatientCourses" Member="PatientCourses">
+    <Type Name="PatientCourse">
+      <Column Name="PatientId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CourceId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PatientCourseOrder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Course_PatientCourse" Member="Course" ThisKey="CourceId" OtherKey="Id" Type="Course" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Patient_PatientCourse" Member="Patient" ThisKey="PatientId" OtherKey="Id" Type="Patient" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PatientDiagnostics" Member="PatientDiagnostics">
+    <Type Name="PatientDiagnostic">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DiagnosticsDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="PatientId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MotionTemplateId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ResultAngle" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Association Name="MotionTemplate_PatientDiagnostic" Member="MotionTemplate" ThisKey="MotionTemplateId" OtherKey="Id" Type="MotionTemplate" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Patient_PatientDiagnostic" Member="Patient" ThisKey="PatientId" OtherKey="Id" Type="Patient" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Patients" Member="Patients">
+    <Type Name="Patient">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Association Name="Patient_PatientCourse" Member="PatientCourses" ThisKey="Id" OtherKey="PatientId" Type="PatientCourse" />
+      <Association Name="Patient_PatientDiagnostic" Member="PatientDiagnostics" ThisKey="Id" OtherKey="PatientId" Type="PatientDiagnostic" />
+      <Association Name="Patient_PatientSchedule" Member="PatientSchedules" ThisKey="Id" OtherKey="PatientId" Type="PatientSchedule" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PatientSchedule" Member="PatientSchedules">
+    <Type Name="PatientSchedule">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PlanDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="PatientId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CourseId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CourseOrder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="PatientSchedule_Session" Member="Sessions" ThisKey="Id" OtherKey="PatientScheduleId" Type="Session" />
+      <Association Name="Course_PatientSchedule" Member="Course" ThisKey="CourseId" OtherKey="Id" Type="Course" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Patient_PatientSchedule" Member="Patient" ThisKey="PatientId" OtherKey="Id" Type="Patient" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Sessions" Member="Sessions">
+    <Type Name="Session">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="GameId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PatientScheduleId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StartTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="EndTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="Session_Attempt" Member="Attempts" ThisKey="Id" OtherKey="SessionId" Type="Attempt" />
+      <Association Name="PatientSchedule_Session" Member="PatientSchedule" ThisKey="PatientScheduleId" OtherKey="Id" Type="PatientSchedule" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+</Database>

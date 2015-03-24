@@ -1,5 +1,6 @@
 ﻿@{
     ViewBag.Title = "Home Page";
+    
 }
 
 <div class="jumbotron">
@@ -29,3 +30,28 @@
         <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
     </div>
 </div>
+
+<div>
+    <h3>Тест БД</h3>
+    <table>
+        <tr>
+            <td>
+                <p>ID</p>
+            </td>
+            <td>
+                <p>NAME</p>
+            </td>
+        </tr>
+        @foreach (var course in ViewBag.Courses)
+        {
+            <tr>
+                <td><p>@course.Id</p></td>
+                <td><p>@course.Name</p></td>
+            </tr>
+        }
+        <tr>
+
+        </tr>
+    </table>
+</div>
+
