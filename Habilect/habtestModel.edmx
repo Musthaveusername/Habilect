@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="habtestModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="habtestModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Attempts">
           <Key>
             <PropertyRef Name="Id" />
@@ -37,6 +37,7 @@
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Test" Type="nchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="Motions">
           <Key>
@@ -104,6 +105,7 @@
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="DoctorId" Type="int" />
         </EntityType>
         <EntityType Name="PatientSchedule">
           <Key>
@@ -353,8 +355,7 @@
             <End Role="Sessions" EntitySet="Sessions" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="habtestModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -397,6 +398,7 @@
           <NavigationProperty Name="CourseMotions" Relationship="Self.FK_CourseMotions_Courses" FromRole="Courses" ToRole="CourseMotions" />
           <NavigationProperty Name="PatientCourses" Relationship="Self.FK_PatientCourses_Courses" FromRole="Courses" ToRole="PatientCourses" />
           <NavigationProperty Name="PatientSchedule" Relationship="Self.FK_PatientSchedule_Courses" FromRole="Courses" ToRole="PatientSchedule" />
+          <Property Name="Test" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityType Name="Motions">
           <Key>
@@ -476,6 +478,7 @@
           <NavigationProperty Name="PatientCourses" Relationship="Self.FK_PatientCourses_Patients" FromRole="Patients" ToRole="PatientCourses" />
           <NavigationProperty Name="PatientDiagnostics" Relationship="Self.FK_PatientDiagnostics_Patients" FromRole="Patients" ToRole="PatientDiagnostics" />
           <NavigationProperty Name="PatientSchedule" Relationship="Self.FK_PatientSchedule_Patients" FromRole="Patients" ToRole="PatientSchedule" />
+          <Property Name="DoctorId" Type="Int32" />
         </EntityType>
         <EntityType Name="PatientSchedule">
           <Key>
@@ -767,6 +770,7 @@
           <EntitySetMapping Name="Courses">
             <EntityTypeMapping TypeName="habtestModel.Courses">
               <MappingFragment StoreEntitySet="Courses">
+                <ScalarProperty Name="Test" ColumnName="Test" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
@@ -838,6 +842,7 @@
           <EntitySetMapping Name="Patients">
             <EntityTypeMapping TypeName="habtestModel.Patients">
               <MappingFragment StoreEntitySet="Patients">
+                <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
