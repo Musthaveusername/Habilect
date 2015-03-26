@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Habilect.Courses>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@foreach (var course in Model)
+{
+   <p>
+   <h3>@Html.DisplayFor(modelItem => course.Name) </h3>
+    <table border="1">
+            @foreach (var motionid in course.CourseMotions)
+            {
+                foreach (var motion in ViewBag.Motions)
+                {
+                    if (motionid.MotionId == motion.Id)
+                    {
+                        <tr>
+                            <td>
+                                <p><b>"Motion #"</b> @motion.Id</p>
+                            </td>
+                            <td>
+                                @foreach (var attempts in motion.Attempts)
+                                {
+                                    <p>"Max Angle:" @attempts.MaxAngle</p>
+                                    <p>"Max Progress:" @attempts.MaxProgress</p>
+                                    <p>"Completed Time" @attempts.CompletedTime</p>
+                                    <p>"Velocity:" @attempts.Velocity</p>
+                                    <p>"Plane Angle:" @attempts.PlaneAngle</p>
+                                    <p>"Spinal Angle:" @attempts.SpinalAngle</p>
+                                    <p>"ShoulderAngle:" @attempts.ShoulderAngle</p>
+                                    <p><b>"Повторы"</b>@motionid.RequiredCount</p>
+                                }
+                    
+                            </td>
+                        </tr>
+                    }
+                }
+            }
+        
+    </table>
+    </p>
+    <br />
+}

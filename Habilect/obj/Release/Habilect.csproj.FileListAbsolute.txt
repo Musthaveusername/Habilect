@@ -75,3 +75,10 @@ C:\Users\Warchiefs\Habilect\Habilect\obj\Release\Habilect.csprojResolveAssemblyR
 C:\Users\Warchiefs\Habilect\Habilect\obj\Release\ApplicationInsights.config
 C:\Users\Warchiefs\Habilect\Habilect\obj\Release\Habilect.dll
 C:\Users\Warchiefs\Habilect\Habilect\obj\Release\Habilect.pdb
+C:\Users\Warchiefs\Habilect\Habilect\bin\Ninject.dll
+C:\Users\Warchiefs\Habilect\Habilect\bin\Ninject.Web.Common.dll
+C:\Users\Warchiefs\Habilect\Habilect\bin\Ninject.Web.Mvc.dll
+C:\Users\Warchiefs\Habilect\Habilect\bin\WebActivatorEx.dll
+C:\Users\Warchiefs\Habilect\Habilect\bin\Ninject.xml
+C:\Users\Warchiefs\Habilect\Habilect\bin\Ninject.Web.Common.xml
+C:\Users\Warchiefs\Habilect\Habilect\bin\Ninject.Web.Mvc.xml

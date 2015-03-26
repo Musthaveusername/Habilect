@@ -10,13 +10,9 @@ namespace Habilect.Controllers
     public class HomeController : Controller
     {
 
-
-
         public ActionResult Index()
         {
-            habtestEntities db = new habtestEntities();
-            IEnumerable<Courses> CourseList = db.Courses;
-            ViewBag.Courses = CourseList;
+            
             return View();
         }
 

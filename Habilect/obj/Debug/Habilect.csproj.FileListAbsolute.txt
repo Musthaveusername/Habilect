@@ -71,7 +71,6 @@ C:\Users\Warchiefs\Habilect\Habilect\bin\Microsoft.Owin.Security.OAuth.xml
 C:\Users\Warchiefs\Habilect\Habilect\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\Warchiefs\Habilect\Habilect\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Warchiefs\Habilect\Habilect\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\Warchiefs\Habilect\Habilect\obj\Debug\Habilect.csprojResolveAssemblyReference.cache
 C:\Users\Warchiefs\Habilect\Habilect\obj\Debug\ApplicationInsights.config
 C:\Users\Warchiefs\Habilect\Habilect\obj\Debug\Habilect.dll
 C:\Users\Warchiefs\Habilect\Habilect\obj\Debug\Habilect.pdb
@@ -82,3 +81,4 @@ C:\Users\Warchiefs\Habilect\Habilect\bin\WebActivatorEx.dll
 C:\Users\Warchiefs\Habilect\Habilect\bin\Ninject.xml
 C:\Users\Warchiefs\Habilect\Habilect\bin\Ninject.Web.Common.xml
 C:\Users\Warchiefs\Habilect\Habilect\bin\Ninject.Web.Mvc.xml
+C:\Users\Warchiefs\Habilect\Habilect\obj\Debug\Habilect.csprojResolveAssemblyReference.cache

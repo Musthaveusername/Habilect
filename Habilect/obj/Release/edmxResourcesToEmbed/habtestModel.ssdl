@@ -1,0 +1,351 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="habtestModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Attempts">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MotionId" Type="int" Nullable="false" />
+    <Property Name="SessionId" Type="int" Nullable="false" />
+    <Property Name="MaxAngle" Type="float" Nullable="false" />
+    <Property Name="MaxProgress" Type="float" Nullable="false" />
+    <Property Name="CompletedTime" Type="time" Precision="7" Nullable="false" />
+    <Property Name="Velocity" Type="float" Nullable="false" />
+    <Property Name="FinishedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PlaneAngle" Type="float" Nullable="false" />
+    <Property Name="SpinalAngle" Type="float" Nullable="false" />
+    <Property Name="ShoulderAngle" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CourseMotions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="CourseId" Type="int" Nullable="false" />
+    <Property Name="MotionId" Type="int" Nullable="false" />
+    <Property Name="RequiredCount" Type="int" Nullable="false" />
+    <Property Name="MotionOrder" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Courses">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Motions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="StartAngle" Type="int" Nullable="false" />
+    <Property Name="EndAngle" Type="int" Nullable="false" />
+    <Property Name="CheckSpinalBalance" Type="bit" Nullable="false" />
+    <Property Name="CheckShoulderBalance" Type="bit" Nullable="false" />
+    <Property Name="ShoulderDeviation" Type="int" Nullable="false" />
+    <Property Name="PlaneDeviation" Type="int" Nullable="false" />
+    <Property Name="SpinalDeviation" Type="int" Nullable="false" />
+    <Property Name="MotionTemplateId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MotionTemplates">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Icon" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="RotationPlane" Type="nvarchar" MaxLength="3" Nullable="false" />
+    <Property Name="AxisJoint" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="RimJoint" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="RimJoint2" Type="nvarchar" MaxLength="100" />
+    <Property Name="DefaultStartAngle" Type="int" Nullable="false" />
+    <Property Name="MinStartAngle" Type="int" Nullable="false" />
+    <Property Name="DefaultEndAngle" Type="int" Nullable="false" />
+    <Property Name="MaxEndAngle" Type="int" Nullable="false" />
+    <Property Name="StartDeviation" Type="int" Nullable="false" />
+    <Property Name="EndDeviation" Type="int" />
+    <Property Name="DefaultPlaneDeviation" Type="int" Nullable="false" />
+    <Property Name="DefaultSpinalDeviation" Type="int" Nullable="false" />
+    <Property Name="DefaultShoulderDeviation" Type="int" Nullable="false" />
+    <Property Name="DefaultCheckSpinalBalance" Type="bit" Nullable="false" />
+    <Property Name="DefaultCheckShoulderBalance" Type="bit" Nullable="false" />
+    <Property Name="ViewStartAngle" Type="int" Nullable="false" />
+    <Property Name="DefaultRequiredCount" Type="int" Nullable="false" />
+    <Property Name="Direction" Type="int" Nullable="false" />
+    <Property Name="InstructionIcon" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="PatientCourses">
+    <Key>
+      <PropertyRef Name="PatientId" />
+      <PropertyRef Name="CourceId" />
+    </Key>
+    <Property Name="PatientId" Type="int" Nullable="false" />
+    <Property Name="CourceId" Type="int" Nullable="false" />
+    <Property Name="PatientCourseOrder" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PatientDiagnostics">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DiagnosticsDate" Type="datetime" Nullable="false" />
+    <Property Name="PatientId" Type="int" Nullable="false" />
+    <Property Name="MotionTemplateId" Type="int" Nullable="false" />
+    <Property Name="ResultAngle" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Patients">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PatientSchedule">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PlanDate" Type="date" Nullable="false" />
+    <Property Name="PatientId" Type="int" Nullable="false" />
+    <Property Name="CourseId" Type="int" Nullable="false" />
+    <Property Name="CourseOrder" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sessions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GameId" Type="int" Nullable="false" />
+    <Property Name="PatientScheduleId" Type="int" Nullable="false" />
+    <Property Name="StartTime" Type="datetime" Nullable="false" />
+    <Property Name="EndTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Attempts_Motions">
+    <End Role="Motions" Type="Self.Motions" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Attempts" Type="Self.Attempts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Motions">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Attempts">
+        <PropertyRef Name="MotionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Attempts_Sessions">
+    <End Role="Sessions" Type="Self.Sessions" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Attempts" Type="Self.Attempts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sessions">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Attempts">
+        <PropertyRef Name="SessionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CourseMotions_Courses">
+    <End Role="Courses" Type="Self.Courses" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CourseMotions" Type="Self.CourseMotions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Courses">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CourseMotions">
+        <PropertyRef Name="CourseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CourseMotions_Motions">
+    <End Role="Motions" Type="Self.Motions" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CourseMotions" Type="Self.CourseMotions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Motions">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CourseMotions">
+        <PropertyRef Name="MotionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Motions_MotionTemplates">
+    <End Role="MotionTemplates" Type="Self.MotionTemplates" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Motions" Type="Self.Motions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MotionTemplates">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Motions">
+        <PropertyRef Name="MotionTemplateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatientCourses_Courses">
+    <End Role="Courses" Type="Self.Courses" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PatientCourses" Type="Self.PatientCourses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Courses">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PatientCourses">
+        <PropertyRef Name="CourceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatientCourses_Patients">
+    <End Role="Patients" Type="Self.Patients" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PatientCourses" Type="Self.PatientCourses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patients">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PatientCourses">
+        <PropertyRef Name="PatientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatientDiagnostics_MotionTemplates">
+    <End Role="MotionTemplates" Type="Self.MotionTemplates" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PatientDiagnostics" Type="Self.PatientDiagnostics" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MotionTemplates">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PatientDiagnostics">
+        <PropertyRef Name="MotionTemplateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatientDiagnostics_Patients">
+    <End Role="Patients" Type="Self.Patients" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PatientDiagnostics" Type="Self.PatientDiagnostics" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patients">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PatientDiagnostics">
+        <PropertyRef Name="PatientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatientSchedule_Courses">
+    <End Role="Courses" Type="Self.Courses" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PatientSchedule" Type="Self.PatientSchedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Courses">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PatientSchedule">
+        <PropertyRef Name="CourseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatientSchedule_Patients">
+    <End Role="Patients" Type="Self.Patients" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PatientSchedule" Type="Self.PatientSchedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patients">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PatientSchedule">
+        <PropertyRef Name="PatientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sessions_PatientSchedule">
+    <End Role="PatientSchedule" Type="Self.PatientSchedule" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Sessions" Type="Self.Sessions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PatientSchedule">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Sessions">
+        <PropertyRef Name="PatientScheduleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="habtestModelStoreContainer">
+    <EntitySet Name="Attempts" EntityType="Self.Attempts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CourseMotions" EntityType="Self.CourseMotions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Courses" EntityType="Self.Courses" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Motions" EntityType="Self.Motions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MotionTemplates" EntityType="Self.MotionTemplates" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PatientCourses" EntityType="Self.PatientCourses" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PatientDiagnostics" EntityType="Self.PatientDiagnostics" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Patients" EntityType="Self.Patients" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PatientSchedule" EntityType="Self.PatientSchedule" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sessions" EntityType="Self.Sessions" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Attempts_Motions" Association="Self.FK_Attempts_Motions">
+      <End Role="Motions" EntitySet="Motions" />
+      <End Role="Attempts" EntitySet="Attempts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Attempts_Sessions" Association="Self.FK_Attempts_Sessions">
+      <End Role="Sessions" EntitySet="Sessions" />
+      <End Role="Attempts" EntitySet="Attempts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CourseMotions_Courses" Association="Self.FK_CourseMotions_Courses">
+      <End Role="Courses" EntitySet="Courses" />
+      <End Role="CourseMotions" EntitySet="CourseMotions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CourseMotions_Motions" Association="Self.FK_CourseMotions_Motions">
+      <End Role="Motions" EntitySet="Motions" />
+      <End Role="CourseMotions" EntitySet="CourseMotions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Motions_MotionTemplates" Association="Self.FK_Motions_MotionTemplates">
+      <End Role="MotionTemplates" EntitySet="MotionTemplates" />
+      <End Role="Motions" EntitySet="Motions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatientCourses_Courses" Association="Self.FK_PatientCourses_Courses">
+      <End Role="Courses" EntitySet="Courses" />
+      <End Role="PatientCourses" EntitySet="PatientCourses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatientCourses_Patients" Association="Self.FK_PatientCourses_Patients">
+      <End Role="Patients" EntitySet="Patients" />
+      <End Role="PatientCourses" EntitySet="PatientCourses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatientDiagnostics_MotionTemplates" Association="Self.FK_PatientDiagnostics_MotionTemplates">
+      <End Role="MotionTemplates" EntitySet="MotionTemplates" />
+      <End Role="PatientDiagnostics" EntitySet="PatientDiagnostics" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatientDiagnostics_Patients" Association="Self.FK_PatientDiagnostics_Patients">
+      <End Role="Patients" EntitySet="Patients" />
+      <End Role="PatientDiagnostics" EntitySet="PatientDiagnostics" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatientSchedule_Courses" Association="Self.FK_PatientSchedule_Courses">
+      <End Role="Courses" EntitySet="Courses" />
+      <End Role="PatientSchedule" EntitySet="PatientSchedule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatientSchedule_Patients" Association="Self.FK_PatientSchedule_Patients">
+      <End Role="Patients" EntitySet="Patients" />
+      <End Role="PatientSchedule" EntitySet="PatientSchedule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sessions_PatientSchedule" Association="Self.FK_Sessions_PatientSchedule">
+      <End Role="PatientSchedule" EntitySet="PatientSchedule" />
+      <End Role="Sessions" EntitySet="Sessions" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
